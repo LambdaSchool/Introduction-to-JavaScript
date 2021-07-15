@@ -1,8 +1,8 @@
 /*🏋️‍♂️🏋️‍♂️🏋️‍♂️🏋️‍♂️🏋️‍♂️🏋️‍♂️🏋️‍♂️🏋️‍♂️🏋️‍♂️ Task 1: Warm-up! 🏋️‍♂️🏋️‍♂️🏋️‍♂️🏋️‍♂️🏋️‍♂️🏋️‍♂️🏋️‍♂️🏋️‍♂️🏋️‍♂️*/
 
-/*MAKE SURE TO RETURN ALL OF THE ANSWERS INSIDE OF A FUNCTION (tasks 1d through task 7), IF YOU DON'T, THE AUTOGRADER WILL NOT WORK*/
+/*MAKE SURE TO RETURN ALL OF THE ANSWERS INSIDE OF A FUNCTION (tasks 1d through task 7), IF YOU DON'T, THE AUTO-GRADER WILL NOT WORK*/
 
-// task 1a, 1b, and 1c are not autograded
+// task 1a, 1b, and 1c are not auto-graded
 
 /*
 When doing these tasks, we recommend using console.log to test the output of your code to make sure it works correctly.
@@ -19,8 +19,22 @@ Do the following:
 
    HINT: no function required
 */
+// function oldEnoughToVote(age)
+// {
+//   const votingAge = 18;
+//   if (age >= votingAge)
+//     return true;
+//   else 
+//     return false;
+// }
 
+function oldEnoughToVote(age)
+{
+  const votingAge = 18;
+  return (age >= votingAge);
+}
 
+console.log('task 1a', oldEnoughToVote(12));
 
 /*
 Task 1b - Values
@@ -33,9 +47,15 @@ Do the following:
    HINT: no function required
 */
 
+let firstVariable = 25;
+const secondVariable = 50;
 
+if (secondVariable > firstVariable)
+{
+  firstVariable = secondVariable;
+}
 
-
+console.log('task 1b', firstVariable);
 
 /*
 Task 1c - Convert Strings to Numbers
@@ -48,8 +68,10 @@ Do the following:
    HINT: look up the Number method
 */
 
+const yearString = "1999";
+const yearInt = parseInt(yearString);
 
-
+console.log('task 1c', yearInt);
 
 /*
 Task 1d - Multiply
@@ -60,11 +82,12 @@ Do the following:
    3. Multiply a and b and return the answer
 */
 
-function multiply(/*add your code here*/){
-  /*add your code here*/
+function multiply(a, b)
+{
+  return a * b;
 }
 
-
+console.log('task 1d', multiply(2, 4));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -76,11 +99,13 @@ Do the following:
  3. Return the newly calculated age
 */
 
-function dogYears(/*add your code here*/){
-  /*add your code here*/
+function dogYears(dogAge)
+{
+  const humanYears = 7; 
+  return  dogAge * humanYears;
 }
 
-
+console.log('task 2', dogYears(3));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -109,11 +134,57 @@ Puppies less than 1 year
 NOTE: If done correctly, a weight of 15 lbs and age of 1 year would return 0.44999999999999996
 */  
 
-function hungryDog(/*add your code here*/){
-  /*add your code here*/
+function hungryDog(weight, years)
+{
+  let percentage = 0;
+
+  //If dog is adult (1 year and older)
+  if (years >= 1)
+  {
+    if (weight < 5)
+    {
+      percentage = 0.05;
+    }
+    else if (weight < 10)
+    {
+      percentage = 0.04;
+    }
+    else if (weight < 15)
+    {
+      percentage = 0.03;
+    }
+    else
+    {
+      percentage = 0.02;
+    }
+  }
+  else //If dog is puppy (less than 1 year)
+  {
+    const months = years * 12;
+
+    if (months < 4)
+    {
+      percentage = 0.1;
+    }
+    else if (months < 7)
+    {
+      percentage = 0.05;
+    }
+    else
+    {
+      percentage = 0.04;
+    }
+  }
+
+  const poundsOfFood = weight * percentage
+  return poundsOfFood;
 }
 
-
+console.log('task 3', hungryDog(14, 1));
+console.log('task 3', hungryDog(16, 1));
+console.log('task 3', hungryDog(20, 0.2));
+console.log('task 3', hungryDog(16, 0.33));
+console.log('task 3', hungryDog(4, 0.667));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -136,11 +207,77 @@ RULES OF THE GAME: Scissors beats Paper | Paper beats Rock | Rock beats Scissors
 HINT: Remember that the order in which we pass in our arguments matters when it comes to parameters
 */
 
-function game(user, computer){
-  /*add your code here*/
+function game(user, computer)
+{
+  let result = "";
+
+  if (user == "rock")
+  {
+    if (computer =="rock")
+    {
+      result = "it's a tie";
+    }
+    else if (computer == "paper")
+    {
+      result = "you lose!";
+    }
+    else if (computer == "scissors")
+    {
+      result = "you win!";
+    }
+  }
+  else if (user == "paper")
+  {
+    if (computer =="rock")
+    {
+      result = "you win!";
+    }
+    else if (computer == "paper")
+    {
+      result = "it's a tie";
+    }
+    else if (computer == "scissors")
+    {
+      result = "you lose!";
+    }
+  }
+  else if (user == "scissors")
+  {
+    if (computer =="rock")
+    {
+      result = "you lose!";
+    }
+    else if (computer == "paper")
+    {
+      result = "you win!";
+    }
+    else if (computer == "scissors")
+    {
+      result = "it's a tie";
+    }
+  }
+
+  return result;
 }
 
+const randomNumber = Math.floor(Math.random()*3) + 1;
+let computer = "";
+if (randomNumber == 1)
+{
+  computer = "paper";
+}
+else if (randomNumber == 2)
+{
+  computer = "scissors";
+}
+else if (randomNumber ==3)
+{
+  computer = "rock";
+}
 
+console.log(`task 4 - (user: paper, computer: ${computer})`, game("paper", computer));
+console.log(`task 4 - (user: rock, computer: ${computer})`, game("rock", computer));
+console.log(`task 4 - (user: scissors, computer: ${computer})`, game("scissors", computer));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -149,15 +286,15 @@ function game(user, computer){
 /*
 Using the miles function below do the following:
 1. Receive a number of kilometers
-2. Convert the number of kiolmeters received to miles
+2. Convert the number of kilometers received to miles
 3. Return the number of miles
 */
 
-function miles(/*add your code here*/){
-  /*add your code here*/
+function miles(kilometers){
+  return kilometers * 0.621371;
 }
 
-
+console.log('task 5a', miles(22));
 
 //Task 5b - Feet to CM
 /*
@@ -167,11 +304,11 @@ Using the feet function below do the following:
 3. Return number of feet
 */
 
-function feet(/*add your code here*/){
-  /*add your code here*/
+function feet(cm){
+  return cm / 30.48;
 }
 
-
+console.log('task 5b', feet(5));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -183,10 +320,14 @@ Using the annoyingSong function below do the following:
     "{number} bottles of soda on the wall, {number} bottles of soda, take one down pass it around {number left over} bottles of soda on the wall"
 */
 
-function annoyingSong(/*add your code here*/){
-      /*add your code here*/
+function annoyingSong(number){
+    if (number > 0)
+      return `${number} bottles of soda on the wall, ${number} bottles of soda, take one down pass it around ${number - 1} bottles of soda on the wall`
+    else
+      return "No more bottles of soda on the wall, no more bottles of soda. Go to the store and buy some more, 99 bottles of soda on the wall.";
 }
 
+console.log('task 6', annoyingSong(3));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -203,11 +344,20 @@ Using the grade function below do the following:
  below should return 'you got an F'
 */
 
-function grade(/*Your Code here */){
-/*Your Code here */
+function grade(number){
+  if (number >= 90)
+    return 'you got an A';
+  else if (number >= 80)
+    return 'you got a B';
+  else if (number >= 70)
+    return 'you got a C';
+  else if (number >= 60)
+    return 'you got a D';
+  else
+    return 'you got an F';
 }
 
-
+console.log('task 7', grade(52));
 
 /*💪💪💪💪💪💪💪💪💪💪 Stretch 💪💪💪💪💪💪💪💪💪💪*/
 
